@@ -17,7 +17,7 @@ function ContactController ($scope,SERVER,$http) {
 	  	$http.post(SERVER.URL, contact).then( (res) => {
 			// $scope.contact
 			console.log(contact)
-			$scope.contacts.push(contact);
+			$scope.contacts.unshift(contact);
 	  });  
 	}
 
