@@ -3,14 +3,110 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Cool Project</title>
+    <title>Contact Form</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
   </head>
-  <body>
-    <div class="container">
-      <p>Welcome to your life.</p>
-    </div>
+
+  <body ng-app="app">
+
+    <div class="MainBox" ng-controller="ContactController">
+
+      <div class="formBox">
+        <div class="contactTitle">
+          <h3>Contact Us</h3>
+        </div>
+
+        <hr>
+
+         <form class="formEntry" 
+               ng-submit="addContact(contact)" 
+               name="myForm">
+
+             <div class="labels"> <label>Full Name</label> </div>  
+              <input type        ="text" 
+                     class       ="fullname1" 
+                     placeholder ="Sally Smith" 
+                     ng-model    ="contact.name" 
+                     name        ="fullname" 
+                     required>
+                  <div ng-messages="myForm.fullname.$error"
+                       ng-if="myForm.fullname.$dirty">
+                    <div style="color:red"  ng-message="required">Name cannot be left empty</div>
+                  </div>
+
+            <div class="labels"><label>Email</label></div>
+              <input type         ="email" 
+                     class        ="email1" 
+                     placeholder  ="ssmith@gmail.com"  
+                     ng-model     ="contact.email"
+                     name         ="email"
+                     required>
+                    <div ng-messages="myForm.email.$error"
+                         ng-if="myForm.email.$invalid">
+                       <div style="color:red"  ng-message="required">Email must contain an '@'</div>
+                  </div>
+
+            <div class="labels"><label>URL</label></div>
+              <input type          ="url" 
+                     class         ="url1" 
+                     placeholder   ="http://mssmith.net" 
+                     ngpattern     ="http://" 
+                     ng-model      ="contact.url" 
+                     name          ="url"
+                     required>
+                    <div ng-messages="myForm.url.$error"
+                         ng-if="myForm.url.$invalid">
+                      <div style="color:red"  ng-message="required">Website must contain http://</div>
+                  </div>
+
+           <div class="labels"> <label>URL</label> </div>
+              <textarea type        ="text" 
+                        class       ="message1" 
+                        placeholder ="Message..."  
+                        ng-model    ="contact.message" 
+                        name        ="message"
+                        required>
+                    <div ng-messages="myForm.message.$error"
+                         ng-if="myForm.message.$dirty">
+                          <div style="color:red"  ng-message="required">Message cannot be left empty</div>
+                    </div>
+               </textarea>
+
+              <button name="button" class="submit1">Add Contact</button>
+          </form> 
+
+      </div>  
+
+
+
+      <div class="allTheContactsBox">
+
+          <div class="contactsBox">
+              <div class="contactWrapper" ng-repeat="c in contacts">
+                <span class="fullname2">{{c.name}}</span>
+                <span class="email2">{{c.email}}</span>
+                <span class="url2">{{c.url}}</span>
+                <textarea type="text" class="message2">{{c.message}}</textarea>
+                <button ng-click="deleteMe(c._id)" name="button" class="submit2">Delete</button>
+                 <hr>
+              </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- ==========mainbox -->
+      </div>
+
+
+
+<!--====================== -->
     <script src="js/bundle.js"></script>
   </body>
 </html>
+
+<!--                       <span style="color:red" ng-show="myForm.contact.name.$pristine && myForm.contact.name.$invalid">
+                          <span ng-show="myForm.contact.name.$error.required">Name cannot be left empty</span>
+                          </span> -->
