@@ -17,7 +17,9 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-
+	-webkit-box-shadow: 1px 1px 5px 0px rgba(50, 50, 50, 0.24);
+	-moz-box-shadow:    1px 1px 5px 0px rgba(50, 50, 50, 0.24);
+	box-shadow:         1px 1px 5px 0px rgba(50, 50, 50, 0.24);
 	form {
 		display: flex;
 		flex-direction: column;
@@ -153,13 +155,13 @@ span:hover  {
 	box-shadow:         1px 1px 5px 0px rgba(50, 50, 50, 0.24);
 }
 
-.contactWrapper {
-	width: 55vw;
-	// border: solid orange 1px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
+// .contactWrapper {
+// 	width: 55vw;
+// 	border: solid orange 1px;
+// 	display: flex;
+// 	flex-direction: column;
+// 	align-items: center;
+// }
 
 .labels {
 	// border: solid red 1px;
@@ -169,6 +171,46 @@ span:hover  {
 		font-size: 1.1em;
 		// border: solid purple 3px;
 	}
+}
+
+
+.contactWrapper { 
+	width: 55vw;
+	// border: solid orange 1px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+   -webkit-animation-duration: 1s; 
+   animation-duration: .5s; 
+   -webkit-animation-fill-mode: both; 
+   animation-fill-mode: both; 
+} 
+
+@-webkit-keyframes fadeInDown { 
+    0% { 
+        opacity: 0; 
+        -webkit-transform: translateY(-20px); 
+    } 
+    100% { 
+        opacity: 1; 
+        -webkit-transform: translateY(0); 
+    } 
+} 
+
+@keyframes fadeInDown { 
+    0% { 
+        opacity: 0; 
+        transform: translateY(-20px); 
+    } 
+    100% { 
+        opacity: 1; 
+        transform: translateY(0); 
+    } 
+} 
+
+.fadeInDown { 
+    -webkit-animation-name: fadeInDown; 
+    animation-name: fadeInDown; 
 }
 
 // .ng-invalid {
